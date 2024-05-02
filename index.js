@@ -4,27 +4,41 @@ const path = require('path')
 const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const port = process.env.port || 4444
+const Bug = require('./models/bugs.js')
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use('/public', express.static(path.join(__dirname, '/public')))
-
+app.use(express.json());
 
 app.get('/', function(req,res,next){
   res.sendFile(__dirname + "/views/index.html")
-}).post('/submit', function(req,res,next){
-  BugData = ({ 
-    'title': req.body.title,
-    'name': req.body.name,
-    'department': req.body.department,
-    'severity': req.body.severity,
-    'description': req.body.description,
-    'Ip': req.ip,
-    'date': new Date().toISOString()
-
+}).post('/submit', async(req,res,next) => {
+try {
+  const bug = await Bug.create(req.body)
+  console.log(req.json({message: bug}))
+} catch (error) {
   
-  })
+}
 
-  res.json(BugData)
+
+
+
+
+
+  console.log(req.body);
+  
+  // BugData = ({ 
+  //   'title': req.body.title,
+  //   'name': req.body.name,
+  //   'department': req.body.department,
+  //   'severity': req.body.severity,
+  //   'description': req.body.description,
+  //   'Ip': req.ip,
+  //   'date': new Date().toISOString()
+  // })
+  
+
+  // res.json(BugData)
 
 
 
