@@ -14,12 +14,13 @@ app.get('/', function(req,res,next){
   res.sendFile(__dirname + "/views/index.html")
 }).post('/submit', async(req,res,next) => {
 try {
+  res.sendFile(__dirname + '/views/thanks.html')
   const bug = await Bug.create(req.body)
   console.log(req.json({message: bug}))
+
 } catch (error) {
   
 }
-
 
 
 
