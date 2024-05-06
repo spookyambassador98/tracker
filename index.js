@@ -11,7 +11,7 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use(express.json());
 
 app.get('/', function(req,res,next){
-  res.sendFile(__dirname + "/views/index.html")
+  res.sendFile(__dirname + "/views/auth.html")
 }).post('/submit', async(req,res,next) => {
 try {
   res.sendFile(__dirname + '/views/thanks.html')
