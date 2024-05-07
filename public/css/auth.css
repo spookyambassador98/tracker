@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display");
-
 body,
 .message,
 .form,
@@ -14,7 +13,7 @@ form {
 body {
   height: 100vh;
   background: #e8e8e8;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Montserrat", sans-serif;
   overflow: hidden;
 }
 
@@ -71,8 +70,8 @@ body {
 .form--heading {
   font-size: 25px;
   height: 50px;
-  color: #129D72;
-  font-family: "Source Sans Pro", sans-serif;
+  color: #555555;
+  font-family: "Montserrat", sans-serif;
 }
 
 .form--signup {
@@ -118,7 +117,7 @@ input:focus {
   font-weight: 400;
   position: relative;
   z-index: 3;
-  background: #129D72;
-  font-family: "Source Sans Pro", sans-serif;
+  background: #555555;
+  font-family: "Montserrat", sans-serif;
   cursor: pointer;
 }

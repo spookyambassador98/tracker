@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const port = process.env.port || 4444
 const Bug = require('./models/bugs.js')
+const NewUser = require('./models/NewUser.js')
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use('/public', express.static(path.join(__dirname, '/public')))
@@ -19,30 +20,19 @@ try {
   console.log(req.json({message: bug}))
 
 } catch (error) {
-  
+  console.log(error); 
 }
 
+console.log(req.body);
+})
 
-
-
-
-  console.log(req.body);
-  
-  // BugData = ({ 
-  //   'title': req.body.title,
-  //   'name': req.body.name,
-  //   'department': req.body.department,
-  //   'severity': req.body.severity,
-  //   'description': req.body.description,
-  //   'Ip': req.ip,
-  //   'date': new Date().toISOString()
-  // })
-  
-
-  // res.json(BugData)
-
-
-
+app.post('/auth', async(req,res)=>{
+  try {
+    const new_user = await NewUser.create(req.body)
+    console.log(new_user);
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 

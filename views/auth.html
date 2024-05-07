@@ -16,11 +16,11 @@
     </div>
     <div class="form form--signup">
       <div class="form--heading">Welcome! Sign Up</div>
-      <form autocomplete="off">
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
-        <button class="button">Sign Up</button>
+      <form id="bug-form" method="post" action="/auth">
+        <label for="name">name:</label><input type="text" placeholder="Name" id="name" name="name">
+        <label for="email">email:</label><input type="email" placeholder="Email" id="email" name="email">
+        <label for="password">password:</label><input type="password" placeholder="Password" id="password" name="password">
+        <button type="submit">Sign Up</button>
       </form>
     </div>
     <div class="form form--login">
@@ -37,3 +37,16 @@
   <script src="public/js/auth.js"></script>
 </body>
 </html>
+<!-- 
+
+
+<div><label for="name">name:</label><input type="text" id="name" name="name"></div>
+<div><label for="email">email:</label><input type="text" id="email" name="email"></div>
+<div><label for="password">password:</label><input type="text" id="password" name="password"></div>
+<div><button type="submit">Sign up</button></div> -->
+
+
+<!-- <input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button type="submit">Sign Up</button> -->
