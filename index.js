@@ -13,28 +13,32 @@ app.use(express.json());
 
 app.get('/', function(req,res,next){
   res.sendFile(__dirname + "/views/auth.html")
-}).post('/submit', async(req,res,next) => {
-try {
-  res.sendFile(__dirname + '/views/thanks.html')
-  const bug = await Bug.create(req.body)
-  console.log(req.json({message: bug}))
-
-} catch (error) {
-  console.log(error); 
-}
-
-console.log(req.body);
 })
 
 app.post('/auth', async(req,res)=>{
   try {
     const new_user = await NewUser.create(req.body)
     console.log(new_user);
+    res.redirect('ticketportal')
   } catch (error) {
     console.log(error);
   }
 })
 
+app.get('/ticketportal', (req,res,next) => {
+  res.sendFile(__dirname + '/views/index.html')
+}).post('/submit', async(req,res,next) => {
+  try {
+    res.sendFile(__dirname + '/views/thanks.html')
+    const bug = await Bug.create(req.body)
+    console.log(req.json({message: bug}))
+  
+  } catch (error) {
+    console.log(error); 
+  }
+  
+  console.log(req.body);
+  })
 
 
 
