@@ -20,6 +20,8 @@ app.get('/', function(req,res,next){
   res.sendFile(__dirname + "/views/auth.html")
 })
 
+
+
 // app.post('/auth', async(req,res)=>{
 //   try {
 //     const new_user = await NewUser.create(req.body)
