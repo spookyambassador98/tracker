@@ -6,39 +6,44 @@ const bodyparser = require('body-parser')
 const port = process.env.port || 4444
 const Bug = require('./models/bugs.js')
 const NewUser = require('./models/NewUser.js')
+const router = require('./routes/newUserRoute.js')
+
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use(express.json());
 
+
+app.use('/auth', router)
+
 app.get('/', function(req,res,next){
   res.sendFile(__dirname + "/views/auth.html")
 })
 
-app.post('/auth', async(req,res)=>{
-  try {
-    const new_user = await NewUser.create(req.body)
-    console.log(new_user);
-    res.redirect('ticketportal')
-  } catch (error) {
-    console.log(error);
-  }
-})
+// app.post('/auth', async(req,res)=>{
+//   try {
+//     const new_user = await NewUser.create(req.body)
+//     console.log(new_user);
+//     res.redirect('ticketportal')
+//   } catch (error) {
+//     console.log(error);
+//   }
+// })
 
-app.get('/ticketportal', (req,res,next) => {
-  res.sendFile(__dirname + '/views/index.html')
-}).post('/submit', async(req,res,next) => {
-  try {
-    res.sendFile(__dirname + '/views/thanks.html')
-    const bug = await Bug.create(req.body)
-    console.log(req.json({message: bug}))
+// app.get('/ticketportal', (req,res,next) => {
+//   res.sendFile(__dirname + '/views/index.html')
+// }).post('/submit', async(req,res,next) => {
+//   try {
+//     res.sendFile(__dirname + '/views/thanks.html')
+//     const bug = await Bug.create(req.body)
+//     console.log(req.json({message: bug}))
   
-  } catch (error) {
-    console.log(error); 
-  }
+//   } catch (error) {
+//     console.log(error); 
+//   }
   
-  console.log(req.body);
-  })
+//   console.log(req.body);
+//   })
 
 
 
