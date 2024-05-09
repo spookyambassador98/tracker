@@ -1,17 +1,19 @@
 const express = require('express')
 const app = express()
+const ejs = require('ejs')
 const path = require('path')
 const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const port = process.env.port || 4444
-const Bug = require('./models/bugs.js')
-const NewUser = require('./models/NewUser.js')
 const router = require('./routes/newUserRoute.js')
+
 
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use(express.json());
+
+app.set('view engine', 'ejs')
 
 
 app.use('/auth', router)
@@ -19,6 +21,7 @@ app.use('/auth', router)
 app.get('/', function(req,res,next){
   res.sendFile(__dirname + "/views/auth.html")
 })
+
 
 
 async function KJN(){
@@ -41,7 +44,8 @@ KJN()
 
 
 
-
+// const Bug = require('./models/bugs.js')
+// const NewUser = require('./models/NewUser.js')
 // app.post('/auth', async(req,res)=>{
 //   try {
 //     const new_user = await NewUser.create(req.body)
