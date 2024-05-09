@@ -21,6 +21,26 @@ app.get('/', function(req,res,next){
 })
 
 
+async function KJN(){
+  await mongoose.connect('mongodb+srv://bugtracker:bugtracker98@bugtracker.jhxnl1m.mongodb.net/')
+  app.listen(port)
+  console.log(`http://localhost:4444`);
+}
+
+
+KJN()
+
+
+
+
+
+
+
+
+
+
+
+
 
 // app.post('/auth', async(req,res)=>{
 //   try {
@@ -46,67 +66,6 @@ app.get('/', function(req,res,next){
   
 //   console.log(req.body);
 //   })
-
-
-
-
-
-
-async function KJN(){
-  await mongoose.connect('mongodb+srv://bugtracker:bugtracker98@bugtracker.jhxnl1m.mongodb.net/')
-  app.listen(port)
-  console.log(`http://localhost:4444`);
-}
-
-
-KJN()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
