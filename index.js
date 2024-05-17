@@ -6,8 +6,7 @@ const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const port = process.env.port || 4444
 const router = require('./routes/newUserRoute.js')
-
-
+const Bug = require('./models/bugs.js')
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use('/public', express.static(path.join(__dirname, '/public')))
@@ -22,7 +21,17 @@ app.get('/', function(req,res,next){
   res.sendFile(__dirname + "/views/auth.html")
 })
 
-
+app.post('/submit', async function(req,res, next){
+  try {
+    res.sendFile(__dirname + '/views/thanks.html')
+    const bug = await Bug.create(req.body)
+  
+  } catch (error) {
+    console.log(error); 
+  }
+  
+  console.log(req.body);
+  })
 
 async function KJN(){
   await mongoose.connect('mongodb+srv://bugtracker:bugtracker98@bugtracker.jhxnl1m.mongodb.net/')
@@ -59,17 +68,17 @@ KJN()
 // app.get('/ticketportal', (req,res,next) => {
 //   res.sendFile(__dirname + '/views/index.html')
 // }).post('/submit', async(req,res,next) => {
-//   try {
-//     res.sendFile(__dirname + '/views/thanks.html')
-//     const bug = await Bug.create(req.body)
-//     console.log(req.json({message: bug}))
+  // try {
+  //   res.sendFile(__dirname + '/views/thanks.html')
+  //   const bug = await Bug.create(req.body)
+  //   console.log(req.json({message: bug}))
   
-//   } catch (error) {
-//     console.log(error); 
-//   }
+  // } catch (error) {
+  //   console.log(error); 
+  // }
   
-//   console.log(req.body);
-//   })
+  // console.log(req.body);
+  // })
 
 
 
