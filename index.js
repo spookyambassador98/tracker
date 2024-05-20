@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const session = require('express-session');
 const ejs = require('ejs')
 const path = require('path')
 const mongoose = require('mongoose')
@@ -11,8 +12,17 @@ const Bug = require('./models/bugs.js')
 app.use(bodyparser.urlencoded({extended: true}))
 app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use(express.json());
-
 app.set('view engine', 'ejs')
+
+
+app.use(session({
+  secret: 'wdqwdm12p', // Replace with your secret key
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true if using HTTPS
+}));
+
+
 
 
 app.use('/auth', router)

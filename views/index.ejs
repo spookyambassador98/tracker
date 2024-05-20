@@ -11,6 +11,7 @@
 <body>
     <header>
         <h1>Hello <%=name%> </h1>
+        <button id="logout-button" onclick="window.location.href='/auth/logout'">Logout</button>
     </header>
     <main>
         <section id="bugs">
@@ -29,6 +30,14 @@
             </form>
         </section>
     </main>
+</body>
+
+</html>
+
+
+
+
+
     <!-- <script>
         document.addEventListener('DOMContentLoaded', function() {
             const bugForm = document.getElementById('bug-form');

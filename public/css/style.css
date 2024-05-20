@@ -8,12 +8,31 @@ body {
 header {
   background-color: #333;
   color: #fff;
-  padding: 1.5rem 0;
+  padding: 1.5rem 1rem;
   text-align: center;
+  position: relative; /* To position the logout button within the header */
 }
 
 h1 {
   margin: 0;
+}
+
+#logout-button {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  padding: 0.5rem 1rem;
+  background-color: #f44336; /* Red color for logout */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logout-button:hover {
+  background-color: #d32f2f;
 }
 
 main {
@@ -72,5 +91,5 @@ li {
 
 textarea {
   resize: vertical;
-  margin-top: 1rem; /* Add margin-top to separate from the inputs */
+  margin-top: 1rem;
 }
