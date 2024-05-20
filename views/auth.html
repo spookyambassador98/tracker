@@ -25,10 +25,11 @@
     </div>
     <div class="form form--login">
       <div class="form--heading">Welcome back! </div>
-      <form autocomplete="off">
-        <input type="text" placeholder="Name">
-        <input type="password" placeholder="Password">
-        <button class="button">Login</button>
+      <form id="bug-form" method="post" action="/auth/login">
+        <label for="name">name:</label><input type="text" placeholder="name" id="name" name="name">
+
+        <label for="password">password:</label><input type="text" placeholder="password" id="password" name="password">
+        <button type="submit">Login</button>
       </form>
     </div>
   </div>

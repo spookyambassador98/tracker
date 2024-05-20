@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+
 body,
 .message,
 .form,
@@ -120,4 +121,61 @@ input:focus {
   background: #555555;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .message {
+    position: relative;
+    width: 100%;
+    transform: translateX(0);
+    height: auto;
+    border-bottom: 1px solid #999;
+  }
+
+  .btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    width: 100%;
+    padding: 20px;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .form--signup {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .form--heading {
+    font-size: 20px;
+  }
+
+  input::placeholder {
+    font-size: 12px;
+  }
+
+  input, .button {
+    font-size: 12px;
+    padding: 8px;
+  }
 }

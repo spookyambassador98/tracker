@@ -21,5 +21,24 @@ newusercontroller.register = async (req, res, next) => {
     })
 };
 
+newusercontroller.login = async (req, res, next) => {
+    const { name, password } = req.body;
+
+    try {
+        const user = await NewUser.findOne({ name, password });
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+
+        res.render('index', {
+            name: req.body.name
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error logging in user' });
+    }
+
+
+};
 
 module.exports = newusercontroller;
