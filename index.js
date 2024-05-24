@@ -8,6 +8,22 @@ const bodyparser = require('body-parser')
 const port = process.env.port || 4444
 const router = require('./routes/newUserRoute.js')
 const Bug = require('./models/bugs.js')
+const ping = require('ping')
+
+function ProbeHost(host) {
+  ping.sys.probe(host, function(isAlive){
+    let msg = isAlive ? `${host} is alive` : `${host} is dead`;
+    console.log(msg);    
+});
+
+}
+const host = '216.24.57.4'
+const interval = 10000
+
+setInterval(() => {
+ProbeHost(host)  
+}, interval);
+
 
 app.use(bodyparser.urlencoded({extended: true}))
 app.use('/public', express.static(path.join(__dirname, '/public')))
@@ -34,7 +50,7 @@ app.get('/', function(req,res,next){
 app.post('/submit', async function(req,res, next){
   try {
     res.sendFile(__dirname + '/views/thanks.html')
-    const bug = await Bug.create(req.body)
+     await Bug.create(req.body)
   
   } catch (error) {
     console.log(error); 
@@ -42,6 +58,17 @@ app.post('/submit', async function(req,res, next){
   
   console.log(req.body);
   })
+
+
+app.get('/ticket', async(req,res,next) => {
+  res.render('index', {
+    name: req.body.name
+
+
+  })})
+
+
+
 
 async function KJN(){
   await mongoose.connect('mongodb+srv://bugtracker:bugtracker98@bugtracker.jhxnl1m.mongodb.net/')
